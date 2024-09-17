@@ -55,3 +55,4 @@ public class UserLogin {
         new UserLogin().retrieveUserDetailsByUserId("Faaris");
     }
 }
+
