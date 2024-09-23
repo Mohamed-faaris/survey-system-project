@@ -1,4 +1,4 @@
-package survey_system;
+package survey_system.userLogin;
 
 import java.sql.Timestamp;
 

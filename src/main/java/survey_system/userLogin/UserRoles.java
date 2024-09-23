@@ -1,4 +1,4 @@
-package survey_system;
+package survey_system.userLogin;
 
 public enum UserRoles {
     DEV(0,"full access"),
