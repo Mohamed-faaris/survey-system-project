@@ -12,6 +12,10 @@ public enum UserRoles {
        this.accessDescription = accessDescription;
     }
 
+    public static int toInt(UserRoles role){
+        return role.permissionLevel;
+    }
+
     public static UserRoles setUserRole(int permissionLevel){
         switch (permissionLevel){
             case 0:return UserRoles.DEV;
@@ -19,5 +23,13 @@ public enum UserRoles {
             case 2:
             default:return UserRoles.USER;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "UserRoles{" +
+                "permissionLevel=" + permissionLevel +
+                ", accessDescription='" + accessDescription + '\'' +
+                '}';
     }
 }

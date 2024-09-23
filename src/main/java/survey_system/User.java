@@ -2,7 +2,8 @@ package survey_system;
 
 import java.sql.Timestamp;
 
-public class User {
+public class User
+{
     public int id;
     public String userId;
     public String name;
