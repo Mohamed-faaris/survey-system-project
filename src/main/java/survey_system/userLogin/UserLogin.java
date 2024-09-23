@@ -8,8 +8,12 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class UserLogin {
-    User user = null;
+    public User user = null;
     boolean isLogged = false;
+
+    public boolean isLogged() {
+        return isLogged;
+    }
 
     static String hashString(String input) {
         try {
@@ -43,7 +47,6 @@ public class UserLogin {
                 temp.timestamp = rs.getTimestamp("timestamp");
                 return temp;
             } else {
-                System.out.println("userId not found");
                 return null;
             }
         } catch (Exception e) {
@@ -52,15 +55,20 @@ public class UserLogin {
     }
     public boolean userLogin(String userId,String password){
         User temp = retrieveUserDetailsByUserId(userId);
-        if(temp.passwordHash.equals(hashString(password))){
-            System.out.println("logged in successfully as"+temp.name);
-            isLogged = true;
-            return true;
+        if(temp == null){
+            System.out.println("UserId not found");
         }
-        else{
-            System.out.println("Username or password is incorrect");
-            return false;
+        else {
+            if(temp.passwordHash.equals(hashString(password))){
+                System.out.println("logged in successfully as "+temp.name+" has "+temp.userRoles.accessDescription);
+                this.user = temp;
+                isLogged = true;
+            }
+            else{
+                System.out.println("Password is incorrect");
+            }
         }
+        return this.isLogged;
     }
 
     public boolean userRegister() {
@@ -88,7 +96,7 @@ public class UserLogin {
             newUser.userId = userId;
             System.out.print("name:");
             newUser.name = s.nextLine();
-            System.out.println("role:DEV");
+            System.out.println("role:USER");
             newUser.userRoles = UserRoles.USER;
             System.out.print("password:");
             newUser.passwordHash = hashString(s.nextLine());
@@ -102,7 +110,8 @@ public class UserLogin {
 
             if (rowsAffected > 0) {
                 System.out.println("User registered successfully!");
-                System.out.println("\n\nsigned in successfully as"+newUser.name);
+                System.out.println("\n\nsigned in successfully as "+newUser.name+" has "+newUser.userRoles.accessDescription);
+                this.user = newUser;
                 isLogged = true;
                 return true;
             } else {
