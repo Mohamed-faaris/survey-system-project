@@ -9,15 +9,6 @@ public class SQL_Connection  implements AutoCloseable{
     private Connection connection;
     private Statement stmt;
 
-    @Override
-    public String toString() {
-        return "SQL_Connection{" +
-                "passwordDB='" + passwordDB + '\'' +
-                ", userDB='" + userDB + '\'' +
-                ", url='" + url + '\'' +
-                '}';
-    }
-
     public SQL_Connection() throws SQLException {
             connection = DriverManager.getConnection(url, userDB, passwordDB);
             stmt = connection.createStatement();
