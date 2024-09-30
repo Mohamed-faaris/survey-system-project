@@ -22,14 +22,14 @@ public class Survey {
                 {"1. Windows", "2. macOS", "3. Linux", "4. Other"}
         };
 
-        int[] responses = new int[questions.length];  // Array to store user's choices
+        int[] responses = new int[questions.length];
 
         for (int i = 0; i < questions.length; i++) {
             System.out.println(questions[i]);
             for (String option : options[i]) {
-                System.out.println(option);  // Display options
+                System.out.println(option);
             }
-            responses[i] = Input.getChoice(s, 1, options[i].length);  // Store the user's response
+            responses[i] = Input.getChoice(s, 1, options[i].length);
         }
 
         return responses;

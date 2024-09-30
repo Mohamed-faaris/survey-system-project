@@ -9,10 +9,9 @@ import java.util.Scanner;
 
 public class UserLogin {
     public User user = null;
-    boolean isLogged = false;
 
     public boolean isLogged() {
-        return isLogged;
+        return (user != null);
     }
 
     static String hashString(String input) {
@@ -31,7 +30,7 @@ public class UserLogin {
         }
     }
 
-     User retrieveUserDetailsByUserId(String userId) {
+     public static User retrieveUserDetailsByUserId(String userId) {
         User temp = new User();
         try(SQL_Connection connection = new SQL_Connection()){
             String query = "SELECT * FROM users WHERE userId = ?";
@@ -62,13 +61,12 @@ public class UserLogin {
             if(temp.passwordHash.equals(hashString(password))){
                 System.out.println("logged in successfully as "+temp.name+" has "+temp.userRoles.accessDescription);
                 this.user = temp;
-                isLogged = true;
             }
             else{
                 System.out.println("Password is incorrect");
             }
         }
-        return this.isLogged;
+        return this.isLogged();
     }
 
     public boolean userRegister() {
@@ -112,7 +110,6 @@ public class UserLogin {
                 System.out.println("User registered successfully!");
                 System.out.println("\n\nsigned in successfully as "+newUser.name+" has "+newUser.userRoles.accessDescription);
                 this.user = newUser;
-                isLogged = true;
                 return true;
             } else {
                 System.out.println("Failed to register the user.");

@@ -1,4 +1,5 @@
 import survey_system.surveySystem.Survey;
+import survey_system.surveySystem.SurveyLogger;
 import survey_system.userLogin.UserLogin;
 import survey_system.utilities.Input;
 
@@ -35,10 +36,7 @@ class demo {
                     break;
             }
         }
-        int[] a = Survey.conductSurvey(s);
-        System.out.print(user.user.name+" :");
-        for (int j : a) {
-            System.out.print(j + ", ");
-        }
+        int[] result = Survey.conductSurvey(s);
+        SurveyLogger.storeInSql(user.user,"test",result);
     }
 }
