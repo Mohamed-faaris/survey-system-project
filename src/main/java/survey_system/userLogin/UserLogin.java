@@ -28,6 +28,7 @@ public class UserLogin {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
+
     }
 
      public static User retrieveUserDetailsByUserId(String userId) {

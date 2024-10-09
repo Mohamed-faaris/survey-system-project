@@ -34,6 +34,8 @@ class demo {
                         }
                     }
                     break;
+                case 3:
+                    if()
             }
         }
         int[] result = Survey.conductSurvey(s);
