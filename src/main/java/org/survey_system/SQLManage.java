@@ -5,8 +5,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-    public class SQLManage {
+public class SQLManage {
 
         Connection con;
 
@@ -105,5 +107,23 @@ import java.sql.Statement;
                 return 0;
         }
 
+        public List<String> getSurveyCodes() throws  SQLException{
+            String str = "SELECT distinct surveycode FROM questions";
+            Statement stm = con.createStatement();
+            ResultSet rst = stm.executeQuery(str);
+
+            List<String> list = new ArrayList<>();
+
+            while(rst.next()){
+                list.add(rst.getString("surveycode"));
+            }
+
+            return list;
+        }
+
+        public static void main(String[] args) throws SQLException {
+            SQLManage sqlManage = new SQLManage();
+            System.out.println(sqlManage.getSurveyCodes());
+        }
     }
 
