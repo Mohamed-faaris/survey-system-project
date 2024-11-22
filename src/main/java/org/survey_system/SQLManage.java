@@ -8,6 +8,26 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/*
+1. Create the database
+CREATE DATABASE survey;
+2. Use the database
+USE survey;
+3. Create necessary tables
+--Actor table
+CREATE TABLE users(id int primary key auto_increment, fname varchar(50), uname varchar(50), pass varchar(50));
+
+        --User Question Table
+CREATE TABLE userQuestions(id int, surveycode varchar(5), total int);
+
+        --Questions table
+CREATE TABLE questions(surveycode varchar(5), question varchar(255), option1 varchar(255), option2 varchar(255), option3 varchar(255), option4 varchar(255));
+
+        --Survey Answer table
+CREATE TABLE surveyquestions(surveycode varchar(5), qno int, opno int);
+ */
+
 public class SQLManage {
 
         Connection con;
@@ -20,13 +40,13 @@ public class SQLManage {
         }
 
         public void newUser(String name, String uname, String pass) throws SQLException {
-            String str = "INSERT INTO actors(fname, uname, pass) values ('"+name+"', '"+uname+"', '"+pass+"')";
+            String str = "INSERT INTO users(fname, uname, pass) values ('"+name+"', '"+uname+"', '"+pass+"')";
             Statement stm = con.createStatement();
             stm.executeUpdate(str);
         }
 
         public int authUser(String uname, String pass) throws SQLException {
-            String str = "SELECT * FROM actors WHERE uname = '"+uname+"'";
+            String str = "SELECT * FROM users WHERE uname = '"+uname+"'";
             Statement stm = con.createStatement();
             ResultSet rst = stm.executeQuery(str);
             if (!rst.next())
@@ -60,15 +80,13 @@ public class SQLManage {
         public ResultSet getQuestions(String surveycode) throws SQLException {
             String str = "SELECT * FROM questions WHERE surveycode = '"+surveycode+"'";
             Statement stm = con.createStatement();
-            ResultSet rst = stm.executeQuery(str);
-            return rst;
+            return stm.executeQuery(str);
         }
 
         public ResultSet surveys(int id, String search) throws SQLException {
             String str = "SELECT * FROM userQuestions WHERE id = "+id+" and surveycode like '%"+search+"%'";
             Statement stm = con.createStatement();
-            ResultSet rst = stm.executeQuery(str);
-            return rst;
+            return stm.executeQuery(str);
         }
 
         public void addTotal() throws SQLException {
@@ -81,10 +99,7 @@ public class SQLManage {
             String str = "SELECT * FROM userQuestions WHERE surveycode = '"+search+"'";
             Statement stm = con.createStatement();
             ResultSet rst = stm.executeQuery(str);
-            if(rst.next())
-                return true;
-            else
-                return false;
+            return rst.next();
         }
 
         public void removeSurvey(String surveycode) throws SQLException {
