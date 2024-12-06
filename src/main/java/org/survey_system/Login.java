@@ -14,20 +14,17 @@ public class Login {
     public void     loginView() throws SQLException {
         SQLManage manage = new SQLManage();
 
-        // Create the main JFrame
         JFrame frame = new JFrame();
         frame.setSize(450, 450);
-        frame.setLayout(new GridBagLayout()); // Use GridBagLayout for precise alignment
+        frame.setLayout(new GridBagLayout());
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Create constraints for GridBagLayout
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10); // Add padding between components
-        gbc.fill = GridBagConstraints.HORIZONTAL; // Stretch components horizontally
-        gbc.anchor = GridBagConstraints.CENTER;  // Center components
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.CENTER;
 
-        // Heading Label
         JLabel heading = new JLabel("SURVEY SYSTEM");
         heading.setHorizontalAlignment(JLabel.CENTER);
         heading.setFont(new Font("Times New Roman", Font.BOLD, 40));
@@ -36,7 +33,6 @@ public class Login {
         gbc.gridwidth = 2; // Span across two columns
         frame.add(heading, gbc);
 
-        // Username Label
         JLabel uname = new JLabel("Username:");
         uname.setHorizontalAlignment(JLabel.LEFT);
         gbc.gridx = 0;
@@ -44,26 +40,26 @@ public class Login {
         gbc.gridwidth = 1; // Reset to single column
         frame.add(uname, gbc);
 
-        // Username TextField
+
         JTextField name = new JTextField();
         gbc.gridx = 1;
         gbc.gridy = 1;
         frame.add(name, gbc);
 
-        // Password Label
+
         JLabel upass = new JLabel("Password:");
         upass.setHorizontalAlignment(JLabel.LEFT);
         gbc.gridx = 0;
         gbc.gridy = 2;
         frame.add(upass, gbc);
 
-        // Password TextField
+
         JPasswordField pass = new JPasswordField();
         gbc.gridx = 1;
         gbc.gridy = 2;
         frame.add(pass, gbc);
 
-        // Login Button
+
         JButton login = new JButton("LOGIN");
         gbc.gridx = 0;
         gbc.gridy = 3;
@@ -101,7 +97,7 @@ public class Login {
             }
         });
 
-        // Signup Button
+
         JButton signUp = new JButton("SIGNUP");
         gbc.gridx = 1;
         gbc.gridy = 3;
