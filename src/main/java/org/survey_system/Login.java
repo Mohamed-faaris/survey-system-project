@@ -11,7 +11,7 @@ public class Login {
 
     int id;
 
-    public void loginView() throws SQLException {
+    public void     loginView() throws SQLException {
         SQLManage manage = new SQLManage();
 
         // Create the main JFrame

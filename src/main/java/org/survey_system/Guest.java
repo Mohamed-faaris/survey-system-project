@@ -45,7 +45,7 @@ public class Guest {
 
         JRadioButton op1 = new JRadioButton("Option1");
         JRadioButton op2 = new JRadioButton("Option2");
-        JRadioButton op3 = new JRadioButton("Opyion3");
+        JRadioButton op3 = new JRadioButton("Option3");
         JRadioButton op4 = new JRadioButton("Option4");
 
         ButtonGroup bgroup = new ButtonGroup();

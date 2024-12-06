@@ -10,6 +10,8 @@ import java.util.List;
 
 
 /*
+DATABASE INIT CMD
+
 1. Create the database
 CREATE DATABASE survey;
 2. Use the database

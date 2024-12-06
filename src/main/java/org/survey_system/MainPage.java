@@ -205,12 +205,12 @@ public class MainPage {
 
             @Override
             public void keyTyped(KeyEvent e) {
-                //To avoid errors.
+
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                //To avoid errors.
+
             }
         });
 
